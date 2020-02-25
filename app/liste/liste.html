@@ -8,6 +8,7 @@
       <th scope="col">Nom de l'intervenant</th>
       <th scope="col">Lieu</th>
       <th scope="col">Date de l'intervention</th>
+      <th scope="col">Etat de l'intervention</th>
       <th scope="col">Modifier</th>
       <th scope="col">Supprimer</th>
     </tr>
@@ -18,9 +19,47 @@
     <td></td>
     <td></td>
     <td></td>
+    <td></td>
     <td><button class="btn btn-warning">Modifier</button></td>
     <td><button class="btn btn-danger">Supprimer</button></td>
   </tbody>
 </table>
 
-<button type="button" class="btn btn-primary" ng-click="form.open()">Ajouter une intervention</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".modal">Ajouter
+  une intervention</button>
+
+<div ng-controller="InterventionCtrl as $ctrl" class="modal fade" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Ajouter une intervention</h5>
+        <button type="button" class="close" data-dismiss=".modal" aria-label="Close" ng-click="closeModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form novalidate class="form-intervention modal-body">
+        <div class="form-group">
+          <label for="title">Libellé</label>
+          <input type="text" class="form-control" id="title" aria-describedby="libelle">
+        </div>
+        <div class="form-group">
+          <label for="description">Description de l'intervention</label>
+          <input type="text" class="form-control" id="description">
+        </div>
+        <div class="form-group">
+          <label for="name">Nom de l'intervenant</label>
+          <input type="text" class="form-control" id="name">
+        </div>
+        <div class="form-group">
+          <label for="localisation">Lieu de l'intervention</label>
+          <input type="text" class="form-control" id="localisation">
+        </div>
+        <div class="form-group">
+          <label for="localisation">Date de l'intervention</label>
+
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

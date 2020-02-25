@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.liste', ['ngRoute'])
+angular.module('myApp.liste', ['ngRoute', 'ui.bootstrap'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/liste', {
@@ -9,6 +9,5 @@ angular.module('myApp.liste', ['ngRoute'])
   });
 }])
 
-.controller('ListeCtrl', [function() {
-
+.controller('ListeCtrl', [function($scope) {
 }]);
