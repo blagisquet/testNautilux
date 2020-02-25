@@ -4,8 +4,8 @@ from mysql.connector import Error
 try: 
   # connection au serveur mysql database interventions
   connection = mysql.connector.connect(host='localhost',
-                                       database='interventions',
-                                       user='root')
+                                      database='interventions',
+                                      user='root')
 
   # SELECT la totalité de la table Intervention      
   sql_select_Query = "select * from Intervention"
@@ -13,6 +13,7 @@ try:
   cursor.execute(sql_select_Query)
   records = cursor.fetchall()
   print("Total number of rows in Intervention is: ", cursor.rowcount)
+  
   # Récupération de chaque entrée de la table Intervention
   print("\nPrinting each intervention record")
   for row in records:
