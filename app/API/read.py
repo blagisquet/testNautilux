@@ -8,7 +8,7 @@ try:
                                       user='root')
 
   # SELECT la totalité de la table Intervention      
-  sql_select_Query = "select * from Intervention"
+  sql_select_Query = "SELECT * FROM Intervention"
   cursor = connection.cursor()
   cursor.execute(sql_select_Query)
   records = cursor.fetchall()

@@ -11,7 +11,7 @@ try:
   cursor = connection.cursor()
   mySql_insert_query = """INSERT INTO Intervention (title, description, name, localisation, date_int)
                           VALUES (%s, %s, %s, %s, %s) """
-  # insertIntervention = ('Réfection de la voirie', 'Refaire la route rue Saint Michel', 'JPG', 'rue Saint Michel', date(2020, 12, 27))
+  insertIntervention = ('Réfection de la voirie', 'Refaire la route rue Saint Michel', 'JPG', 'rue Saint Michel', date(2020, 12, 27))
   cursor.execute(mySql_insert_query, insertIntervention)
   connection.commit()
   print("Record inserted successfully into Intervention table")
