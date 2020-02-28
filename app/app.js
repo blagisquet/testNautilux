@@ -1,10 +1,10 @@
 'use strict';
 
 // Declare app level module which depends on views, and core components
-angular.module('myApp', [
+angular.module('test', [
   'ngRoute',
-  'myApp.liste',
-  'myApp.form',
+  'test.liste',
+  'test.form',
   'ui.bootstrap'
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {

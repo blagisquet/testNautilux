@@ -28,37 +28,38 @@
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".modal">Ajouter
   une intervention</button>
 
-<div ng-controller="InterventionCtrl as $ctrl" class="modal fade" tabindex="-1" aria-hidden="true">
+<div ng-controller="formCtrl" class="modal fade" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Ajouter une intervention</h5>
-        <button type="button" class="close" data-dismiss=".modal" aria-label="Close" ng-click="closeModal()">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <!-- <button type="button" class="close" data-dismiss=".modal" aria-label="Close" ng-click="closeModal()">
+            <span aria-hidden="true">&times;</span>
+          </button> -->
       </div>
-      <form novalidate class="form-intervention modal-body">
+      <form novalidate name="interventionForm" class="form-intervention modal-body">
         <div class="form-group">
           <label for="title">Libellé</label>
-          <input type="text" class="form-control" id="title" aria-describedby="libelle">
+          <input type="text" class="form-control" ng-model="title" id="title" aria-describedby="libelle">
         </div>
         <div class="form-group">
           <label for="description">Description de l'intervention</label>
-          <input type="text" class="form-control" id="description">
+          <input type="text" class="form-control" ng-model="description" id="description">
         </div>
         <div class="form-group">
           <label for="name">Nom de l'intervenant</label>
-          <input type="text" class="form-control" id="name">
+          <input type="text" class="form-control" ng-model="name" id="name">
         </div>
         <div class="form-group">
           <label for="localisation">Lieu de l'intervention</label>
-          <input type="text" class="form-control" id="localisation">
+          <input type="text" class="form-control" ng-model="localisation" id="localisation">
         </div>
         <div class="form-group">
-          <label for="localisation">Date de l'intervention</label>
+          <label for="date">Date de l'intervention</label>
 
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="reset" ng-click="formReset()" class="btn btn-secondary">Reset</button>
+        <button type="submit" ng-click="formSubmit(interventionForm)" class="btn btn-primary">Submit</button>
       </form>
     </div>
   </div>
