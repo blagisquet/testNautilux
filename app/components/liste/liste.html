@@ -1,6 +1,6 @@
 <h1>Liste des interventions</h1>
 
-<table class="table">
+<table class="table" ng-controller="ListeCtrl">
   <thead>
     <tr>
       <th scope="col">Libellé</th>
@@ -13,30 +13,32 @@
       <th scope="col">Supprimer</th>
     </tr>
   </thead>
-  <tbody>
-    <td scope="row"></td>
+  <tbody ng-repeat="intervention in interventions">
+    <td scope="row">{{intervention.title}}</td>
+    <td>{{intervention.description}}</td>
+    <td>{{intervention.name}}</td>
+    <td>{{intervention.localisation}}</td>
+    <td>{{intervention.date}}</td>
     <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td><button class="btn btn-warning">Modifier</button></td>
-    <td><button class="btn btn-danger">Supprimer</button></td>
+    <td>
+      <button class="btn btn-warning" ng-if="intervention.date < now || intervention.date.length === 0" ng-click="modifyIntervention()">Modifier</button>
+    </td>
+    <td><button class="btn btn-danger" ng-click="deleteIntervention()">Supprimer</button></td>
   </tbody>
 </table>
 
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".modal">Ajouter
   une intervention</button>
 
-<div ng-controller="formCtrl" class="modal fade" tabindex="-1" aria-hidden="true">
+<!-- <div ng-controller="formCtrl" class="modal fade" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Ajouter une intervention</h5>
+        <h5 class="modal-title">Ajouter une intervention</h5> -->
         <!-- <button type="button" class="close" data-dismiss=".modal" aria-label="Close" ng-click="closeModal()">
             <span aria-hidden="true">&times;</span>
           </button> -->
-      </div>
+      <!-- </div>
       <form novalidate name="interventionForm" class="form-intervention modal-body">
         <div class="form-group">
           <label for="title">Libellé</label>
@@ -63,4 +65,4 @@
       </form>
     </div>
   </div>
-</div>
+</div> -->
