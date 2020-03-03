@@ -2,18 +2,22 @@
 
 angular.module('test.liste', ['ngRoute', 'ui.bootstrap'])
 
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/liste', {
-    templateUrl: 'components/liste/liste.html',
-    controller: 'ListeCtrl'
-  });
-}])
+  .config(['$routeProvider', function ($routeProvider) {
+    $routeProvider.when('/liste', {
+      templateUrl: 'components/liste/liste.html',
+      controller: 'ListeCtrl'
+    });
+  }])
 
-.controller('ListeCtrl', ['$scope', 'http', function($scope, $http) {
-  $scope.now = new Date();
-  $scope.now.toISOString();
+  .module('app', [
+    '720kb.datepicker'
+  ])
 
-    // GET ALL RECORD
+  .controller('ListeCtrl', ['$scope', 'http', function ($scope, $http) {
+    $scope.now = new Date();
+    $scope.now.toISOString();
+
+    // GET ALL RECORDS
     $http({
       method: 'post',
       url: 'API/read.py',
@@ -21,18 +25,18 @@ angular.module('test.liste', ['ngRoute', 'ui.bootstrap'])
       $scope.intervention = response.data;
     });
 
-    //ADD NEW RECORD
-    $scope.add = function () {
+    //REMOVE RECORD
+    $scope.remove = function (index, id) {
       $http({
         method: 'post',
-        url: 'API/create.py',
-        data: { title: $scope.title, description: $scope.description, localisation: $scope.localisation, name: $scope.name, date: $scope.date }
+        url: 'delete.py',
+        data: { id: id }
       }).then(function successCallback(response) {
-        if (response.data.length > 0) {
-          $scope.users.push(response.data[0]);
+        if (response.data === 1) {
+          $scope.users.splice(index, 1);
         } else {
-          console.log('Record not inserted');
+          console.log('Record not deleted');
         }
       });
     }
-}])
+  }]);
